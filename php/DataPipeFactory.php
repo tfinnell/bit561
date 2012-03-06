@@ -4,6 +4,7 @@
 include('baseDataPipe.php');
 include('ProjectFileDataPipe.php');
 include('UsersDataPipe.php');
+include('CodeSnippetsDataPipe.php');
 
 // Any query doing basic CRUD will fall through to the default and use the BaseDataPipe.
 // These queries do one table and one record at a time.

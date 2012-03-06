@@ -16,36 +16,36 @@
     return this;
   };
 
-  $CS.fn.setUpUsers = function() {
+  $CS.fn.setUpCodeSnippets = function() {
 
     // Put all javascript variable declarations at the top of the function.
-    var codesnippets = {
-      pipe : "codesnippets",
-      tableName : "codesnippets",
+    var codeSnippets = {
+      pipe : "codeSnippets",
+      tableName : "codeSnippets",
       queryType : "select",
-      email: "%"
+      code: "%"
     },
     snippetnames = [];
 
     // Load the data into structure, a jagged associative array.
-    post(codesnippets);
+    post(codeSnippets);
 
-    snippetnames = $S.getType("codesnippets");
+    snippetnames = $S.getType("codeSnippets");
 
     if ( snippetnames.length > 0 ) {
-      $F.fillCategorySelector("codesnippets")
+      $F.fillCategorySelector("codeSnippets")
     }
 
     // Display the first data value or a clear screen.
     if ( snippetnames.length > 0 ) {
       
-      $F.clearForm("codesnippets");
+      $F.clearForm("codeSnippets");
     }
 
     // Establish the carousel and set its events.
     $C.setC(snippetnames);
-    $C.setSelect("codesnippetselect", $C.getC(), "codesnippets", "snippet");
-    $C.makeEventHandlers("codesnippetscontrol", "codesnippets", $CS.bailout );
+    $C.setSelect("codeSnippetselect", $C.getC(), "codeSnippets", "snippet");
+    $C.makeEventHandlers("codeSnippetscontrol", "codeSnippets", $CS.bailout );
 
   };
  
