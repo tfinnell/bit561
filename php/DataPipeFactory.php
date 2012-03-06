@@ -22,6 +22,10 @@ function dataPipeFactory($mapManager, $dataManager) {
         $dataPipe = new UsersDataPipe($mapManager, $dataManager);
         break;
 
+    case "codeSnippets" :
+        $dataPipe = new CodeSnippetsDataPipe($mapManager, $dataManager);
+        break;
+
     default:
         $dataPipe = new BaseDataPipe($mapManager, $dataManager);
     }

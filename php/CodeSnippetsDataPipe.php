@@ -9,17 +9,17 @@
  *          "project" : "BIT561"
  *      }
  **********************************************************/
-class UsersDataPipe extends baseDataPipe {
+class CodeSnippetsDataPipe extends baseDataPipe {
 
-    protected $user;
+    protected $snippet;
 
     function __construct($tableMapManager, $dataManager) {
         parent::__construct($tableMapManager, $dataManager);
-        $this->user = $_REQUEST['email'];       
+        $this->snippet = $_REQUEST['code'];       
     }
 
     function where() {
-        return "WHERE email LIKE '".$this->user."'";
+        return "WHERE code LIKE '".$this->snippet."'";
     }
 
 }

@@ -2,57 +2,57 @@
 
 (function() {
 
-  function USERSCONTROL() {
+  function CODESNIPPETSCONTROL() {
 
   }
 
-  $U = new USERSCONTROL();
-  $U.fn = USERSCONTROL.prototype;
+  $CS = new CODESNIPPETSCONTROL();
+  $CS.fn = CODESNIPPETSCONTROL.prototype;
 
-  $U.fn.init = function() {
+  $CS.fn.init = function() {
   };
 
-  $U.fn.getThis = function() {
+  $CS.fn.getThis = function() {
     return this;
   };
 
-  $U.fn.setUpUsers = function() {
+  $CS.fn.setUpUsers = function() {
 
     // Put all javascript variable declarations at the top of the function.
-    var users = {
-      pipe : "users",
-      tableName : "users",
+    var codesnippets = {
+      pipe : "codesnippets",
+      tableName : "codesnippets",
       queryType : "select",
       email: "%"
     },
-    usernames = [];
+    snippetnames = [];
 
     // Load the data into structure, a jagged associative array.
-    post(users);
+    post(codesnippets);
 
-    usernames = $S.getType("users");
+    snippetnames = $S.getType("codesnippets");
 
-    if ( usernames.length > 0 ) {
-      $F.fillCategorySelector("users")
+    if ( snippetnames.length > 0 ) {
+      $F.fillCategorySelector("codesnippets")
     }
 
     // Display the first data value or a clear screen.
-    if ( usernames.length > 0 ) {
+    if ( snippetnames.length > 0 ) {
       
-      $F.clearForm("users");
+      $F.clearForm("codesnippets");
     }
 
     // Establish the carousel and set its events.
-    $C.setC(usernames);
-    $C.setSelect("userselect", $C.getC(), "users", "userName");
-    $C.makeEventHandlers("userscontrol", "users", $U.bailout );
+    $C.setC(snippetnames);
+    $C.setSelect("codesnippetselect", $C.getC(), "codesnippets", "snippet");
+    $C.makeEventHandlers("codesnippetscontrol", "codesnippets", $CS.bailout );
 
   };
  
    
 		
   // Do nothing on bailout at the moment.
-  $U.fn.bailout = function() {
+  $CS.fn.bailout = function() {
   };
 
 })();
@@ -75,24 +75,20 @@ $(document).ready( function() {
   $("#helpComments").css("top", topStr);
   switch ($(this).attr("id")) {
 
-    case "userName":
-      message = "<br /><br />Enter your desired user name. ";
+    case "code":
+      message = "<br /><br />Enter your snippet of code. ";
       break;
 
-    case "firstName":
-      message = "<br /><br />Enter your first name.";
+    case "FK_language":
+      message = "<br /><br />Enter the language your snippet is in.";
       break;
 
-    case "lastName":
-      message = "<br /><br />Enter your last name";
+    case "description":
+      message = "<br /><br />Enter a description for your code snippet.";
       break;
 
-    case "email":
-      message = "<br /><br />Enter your email address";
-      break;
-
-    case "password":
-      message = "Enter your password";
+    case "FK_user":
+      message = "<br /><br />Select a user from the dropdown.";
       break;
 
     default:
