@@ -37,7 +37,7 @@ CREATE TABLE tablemaps (
 */
 
 
-DROP TABLE IF EXISTS `masterid`;
+DROP TABLE IF EXISTS `masterID`;
 
 CREATE TABLE masterID (
     object_ID                         char(23) not null,
@@ -133,4 +133,14 @@ CREATE TABLE users (
     email       VARCHAR(40) NOT NULL,
     password    VARCHAR(40) NOT NULL,
     entryDate   TIMESTAMP   NOT NULL
+);
+
+DROP TABLE IF EXISTS `codeSnippets`;
+CREATE TABLE codeSnippets (
+    object_ID   CHAR(23) NOT NULL PRIMARY KEY,
+    code        VARCHAR(5000)   NOT NULL,
+    FK_user     CHAR(23)        NOT NULL,
+    FK_language CHAR(23)        NOT NULL,
+    entryDate   TIMESTAMP       NOT NULL,
+    description VARCHAR(5000)   NULL
 );
