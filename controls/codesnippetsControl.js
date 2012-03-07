@@ -6,59 +6,59 @@
 
   }
 
-  $PF = new CODESNIPPETSCONTROL();
-  $PF.fn = CODESNIPPETSCONTROL.prototype;
+  $CS = new CODESNIPPETSCONTROL();
+  $CS.fn = CODESNIPPETSCONTROL.prototype;
 
-  $PF.fn.init = function() {
+  $CS.fn.init = function() {
   };
 
-  $PF.fn.getThis = function() {
+  $CS.fn.getThis = function() {
     return this;
   };
 
-  $PF.fn.setUpProjectFiles = function() {
+  $CS.fn.setUpCodeSnippets = function() {
 
     // Put all javascript variable declarations at the top of the function.
-    var projectfiles = {
-      pipe : "projectfiles",
-      tableName : "projectfiles",
+    var codesnippets = {
+      pipe : "codeSnippets",
+      tableName : "codeSnippets",
       queryType : "select",
       project : "BIT561"
     },
-        filenames = [];
+        snippets = [];
 
     // Load the data into structure, a jagged associative array.
-    post(projectfiles);
+    post(codesnippets);
 
-    filenames = $S.getType("projectfiles");
+    snippets = $S.getType("codeSnippets");
 
     // Set up the category selector.  Assumes the data objects have a category member.
-    if ( filenames.length > 0 ) {
-      $F.fillCategorySelector("projectfiles", "selectFileCategory");
+    if ( snippets.length > 0 ) {
+      $F.fillCategorySelector("codeSnippets", "selectCodeCategory");
     }
 
     // Display the first data value or a clear screen.
-    if ( filenames.length > 0 ) {
-      $F.present("projectfiles", filenames[0]);
+    if ( snippets.length > 0 ) {
+      $F.present("codeSnippets", snippets[0]);
     } else {
-      $F.clearForm("projectfiles");
+      $F.clearForm("codeSnippets");
     }
 
     // Establish the carousel and set its events.
-    $C.setC(filenames);
-    $C.setSelect("fileselect", $C.getC(), "projectfiles", "name");
-    $C.makeEventHandlers("filecontrol", "projectfiles", $PF.bailout );
+    $C.setC(snippets);
+    $C.setSelect("fileselect", $C.getC(), "codeSnippets", "name");
+    $C.makeEventHandlers("filecontrol", "codeSnippets", $CS.bailout );
 
     // Put an event on the category selector.
     $("#selectFileCategory")
       .change(function(e) {
-        $F.categorySelector(this, "fileselect", "projectfiles");
+        $F.categorySelector(this, "fileselect", "codeSnippets");
       });
 
   };
 
   // Do nothing on bailout at the moment.
-  $PF.fn.bailout = function() {
+  $CS.fn.bailout = function() {
   };
 
 })();
