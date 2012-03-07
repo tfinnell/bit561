@@ -23,7 +23,7 @@
       pipe : "codeSnippets",
       tableName : "codeSnippets",
       queryType : "select",
-      project : "BIT561"
+      code : "%"
     },
         snippets = [];
 
@@ -46,13 +46,13 @@
 
     // Establish the carousel and set its events.
     $C.setC(snippets);
-    $C.setSelect("fileselect", $C.getC(), "codeSnippets", "name");
-    $C.makeEventHandlers("filecontrol", "codeSnippets", $CS.bailout );
+    $C.setSelect("codeselect", $C.getC(), "codeSnippets", "name");
+    $C.makeEventHandlers("codecontrol", "codeSnippets", $CS.bailout );
 
     // Put an event on the category selector.
     $("#selectFileCategory")
       .change(function(e) {
-        $F.categorySelector(this, "fileselect", "codeSnippets");
+        $F.categorySelector(this, "codeselect", "codeSnippets");
       });
 
   };
@@ -81,36 +81,20 @@ $(document).ready( function() {
   $("#helpComments").css("top", topStr);
   switch ($(this).attr("id")) {
 
-    case "source":
-      message = "Type in the location of the source code file being converted into HTML. ";
-      message += "Put in the complete location: drive, path, filename, and extension.";
+    case "FK_language":
+      message = "Select the programming language that the snippet is written in.";
       break;
 
-    case "destination":
-      message = "Enter the location of the HTML file created by the autodoc conversion. ";
-      message += "Put in the complete location: drive, path, filename, and extension.";
-      break;
-
-    case "project":
-      message = "Enter the name of the project files to be processed with the autodoc ";
-      message += "command.";
-      break;
-
-    case "name":
-      message = "Name is a short, one line description of the file being converted.  ";
-      message += "Names are used in indexes and drop down selectors as a quick way ";
-      message += "to indicate which file is being chosen.";
+    case "code":
+      message = "Paste or enter the code snippet.";
       break;
 
     case "description":
-      message = "A longer description of the contents of a project source code file. ";
-      message += "The description can be used in a document describing all project ";
-      message += "work.";
+      message = "Enter a description of the snippet of code that was entered.";
       break;
 
-    case "category":
-      message = "Creating categories such a php, css, etc., makes it easier to find ";
-      message += "particular files in projects with a large number of files.";
+    case "FK_user":
+      message = "Select the user this snippet belongs to.";
       break;
 
     default:
