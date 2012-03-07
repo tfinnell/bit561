@@ -6,53 +6,59 @@
 
   }
 
-  $CS = new CODESNIPPETSCONTROL();
-  $CS.fn = CODESNIPPETSCONTROL.prototype;
+  $PF = new CODESNIPPETSCONTROL();
+  $PF.fn = CODESNIPPETSCONTROL.prototype;
 
-  $CS.fn.init = function() {
+  $PF.fn.init = function() {
   };
 
-  $CS.fn.getThis = function() {
+  $PF.fn.getThis = function() {
     return this;
   };
 
-  $CS.fn.setUpCodeSnippets = function() {
+  $PF.fn.setUpProjectFiles = function() {
 
     // Put all javascript variable declarations at the top of the function.
-    var codeSnippets = {
-      pipe : "codeSnippets",
-      tableName : "codeSnippets",
+    var projectfiles = {
+      pipe : "projectfiles",
+      tableName : "projectfiles",
       queryType : "select",
-      code: "%"
+      project : "BIT561"
     },
-    snippetnames = [];
+        filenames = [];
 
     // Load the data into structure, a jagged associative array.
-    post(codeSnippets);
+    post(projectfiles);
 
-    snippetnames = $S.getType("codeSnippets");
+    filenames = $S.getType("projectfiles");
 
-    if ( snippetnames.length > 0 ) {
-      $F.fillCategorySelector("codeSnippets")
+    // Set up the category selector.  Assumes the data objects have a category member.
+    if ( filenames.length > 0 ) {
+      $F.fillCategorySelector("projectfiles", "selectFileCategory");
     }
 
     // Display the first data value or a clear screen.
-    if ( snippetnames.length > 0 ) {
-      
-      $F.clearForm("codeSnippets");
+    if ( filenames.length > 0 ) {
+      $F.present("projectfiles", filenames[0]);
+    } else {
+      $F.clearForm("projectfiles");
     }
 
     // Establish the carousel and set its events.
-    $C.setC(snippetnames);
-    $C.setSelect("codeSnippetselect", $C.getC(), "codeSnippets", "snippet");
-    $C.makeEventHandlers("codeSnippetscontrol", "codeSnippets", $CS.bailout );
+    $C.setC(filenames);
+    $C.setSelect("fileselect", $C.getC(), "projectfiles", "name");
+    $C.makeEventHandlers("filecontrol", "projectfiles", $PF.bailout );
+
+    // Put an event on the category selector.
+    $("#selectFileCategory")
+      .change(function(e) {
+        $F.categorySelector(this, "fileselect", "projectfiles");
+      });
 
   };
- 
-   
-		
+
   // Do nothing on bailout at the moment.
-  $CS.fn.bailout = function() {
+  $PF.fn.bailout = function() {
   };
 
 })();
@@ -75,20 +81,36 @@ $(document).ready( function() {
   $("#helpComments").css("top", topStr);
   switch ($(this).attr("id")) {
 
-    case "code":
-      message = "<br /><br />Enter your snippet of code. ";
+    case "source":
+      message = "Type in the location of the source code file being converted into HTML. ";
+      message += "Put in the complete location: drive, path, filename, and extension.";
       break;
 
-    case "FK_language":
-      message = "<br /><br />Enter the language your snippet is in.";
+    case "destination":
+      message = "Enter the location of the HTML file created by the autodoc conversion. ";
+      message += "Put in the complete location: drive, path, filename, and extension.";
+      break;
+
+    case "project":
+      message = "Enter the name of the project files to be processed with the autodoc ";
+      message += "command.";
+      break;
+
+    case "name":
+      message = "Name is a short, one line description of the file being converted.  ";
+      message += "Names are used in indexes and drop down selectors as a quick way ";
+      message += "to indicate which file is being chosen.";
       break;
 
     case "description":
-      message = "<br /><br />Enter a description for your code snippet.";
+      message = "A longer description of the contents of a project source code file. ";
+      message += "The description can be used in a document describing all project ";
+      message += "work.";
       break;
 
-    case "FK_user":
-      message = "<br /><br />Select a user from the dropdown.";
+    case "category":
+      message = "Creating categories such a php, css, etc., makes it easier to find ";
+      message += "particular files in projects with a large number of files.";
       break;
 
     default:
