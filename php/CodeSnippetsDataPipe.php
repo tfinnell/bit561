@@ -3,10 +3,10 @@
 /**********************************************************
  *  Post for this data pipe with:
  *     {
-            "pipe" : "users",
+            "pipe" : "codeSnippets",
  *          "queryType" : "select",
- *          "tableName" : "users",
- *          "project" : "BIT561"
+ *          "tableName" : "codeSnippets",
+ *          "code" : "BIT561"
  *      }
  **********************************************************/
 class CodeSnippetsDataPipe extends baseDataPipe {
@@ -20,6 +20,14 @@ class CodeSnippetsDataPipe extends baseDataPipe {
 
     function where() {
         return "WHERE code LIKE '".$this->snippet."'";
+    }
+
+    // requires the external table and column in dot notation and
+    // the codeSnippets column as parameters
+    function joins($extTableAndCol, $csCol) {
+        list($extTable, $extCol) = explode(".", $extTableAndCol);
+        return "JOIN " . $extTable . " ON ". $extTableAndCol
+            . " = codeSnippets." . $csCol;
     }
 
 }
