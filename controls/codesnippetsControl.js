@@ -82,7 +82,7 @@ $(document).ready( function() {
   switch ($(this).attr("id")) {
 
     case "FK_language":
-      message = "Select the programming language that the snippet is written in.";
+      message = "Enter the programming language that the snippet is written in.";
       break;
 
     case "code":
