@@ -26,7 +26,7 @@ $PF.fn.setUpProjectFiles = function() {
       project : "BIT561"
    },
    filenames = [];
-   
+
    // Load the data into structure, a jagged associative array.
    post(projectfiles);
 

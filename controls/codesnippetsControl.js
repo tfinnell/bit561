@@ -25,12 +25,13 @@
       queryType : "select",
       code : "%"
     },
-        snippets = [];
+    snippets = [];
 
     // Load the data into structure, a jagged associative array.
     post(codesnippets);
 
     snippets = $S.getType("codeSnippets");
+    console.log(snippets);
 
     // Set up the category selector.  Assumes the data objects have a category member.
     if ( snippets.length > 0 ) {
@@ -54,7 +55,6 @@
       .change(function(e) {
         $F.categorySelector(this, "codeselect", "codeSnippets", "FK_language");
       });
-
   };
 
   // Do nothing on bailout at the moment.
@@ -105,5 +105,4 @@ $(document).ready( function() {
   $("#helpComments").html(message);
   });
 });
-
 

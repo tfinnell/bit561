@@ -2,40 +2,22 @@ INSERT INTO codeSnippets (object_ID, code, FK_user, FK_language, entryDate, desc
 VALUES
 (
     'codea-testa-testa-testa',
-    'function getUrlVars()
-    {
-    var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf(\'?\') + 1).split(\'&\');
-
-    for(var i = 0; i < hashes.length; i++)
-    {
-    hash = hashes[i].split(\'=\');
-    vars.push(hash[0]);
-    vars[hash[0]] = hash[1];
-    }
-
-    return vars;
-    }',
+    'puts "hello world"',
     'testa-testa-testa-testa',
-    'Javascript',
+    'Ruby',
     NOW(),
-    'This is some javascript.'),
+    'This is some ruby.'),
 (
     'codeb-testb-testb-testb',
-    'define("db_server","localhost");
-    define("db_user","root");
-    define("db_password","root");
-
-    class mysql
-
-    {
-    var $conn;
-    var $error;
-
-    function get_error() {
-    return $this->error;
-    }',
+    'echo "hello world";',
     'testa-testa-testa-testa',
     'PHP',
     NOW(),
-    'This is some PHP.')
+    'This is some PHP.'),
+(
+    'codec-testc-testc-testc',
+    'print("hello world")',
+    'testa-testa-testa-testa',
+    'Python',
+    NOW(),
+    'This is some Python.');

@@ -138,6 +138,7 @@ CREATE TABLE users (
 DROP TABLE IF EXISTS `codeSnippets`;
 CREATE TABLE codeSnippets (
     object_ID   CHAR(23) NOT NULL PRIMARY KEY,
+    name        VARCHAR(40)     NOT NULL,
     code        VARCHAR(5000)   NOT NULL,
     FK_user     CHAR(23)        NOT NULL,
     FK_language CHAR(23)        NOT NULL,
