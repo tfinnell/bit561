@@ -70,7 +70,7 @@ class BaseDataPipe {
       }
    }
 	
-   /*+ TODO::location=BaseDataPipe.php::task=Think through the logic of masterid
+   /*+ TODO::location=baseDataPipe.php::task=Think through the logic of masterid
               table handling and the possible failure of an insert into the masterid
               table::author=Ed Anderson   */
 

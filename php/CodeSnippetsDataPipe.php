@@ -9,7 +9,7 @@
  *          "code" : "%"
  *      }
  **********************************************************/
-class CodeSnippetsDataPipe extends baseDataPipe {
+class CodeSnippetsDataPipe extends BaseDataPipe {
 
     protected $snippet;
 
