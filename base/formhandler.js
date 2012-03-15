@@ -272,7 +272,6 @@ $F.fn.displayHTML = function( response ) {
 
 // Filter a dataType by category and goal.
 $F.fn.categorySelector = function(control, carouselSelect, formName, name ) {
-
 	// Find the category.
 	var $control = $(control);
 	var categorySelected = $control.val();

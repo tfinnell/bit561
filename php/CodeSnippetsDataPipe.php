@@ -6,7 +6,7 @@
             "pipe" : "codeSnippets",
  *          "queryType" : "select",
  *          "tableName" : "codeSnippets",
- *          "code" : "BIT561"
+ *          "code" : "%"
  *      }
  **********************************************************/
 class CodeSnippetsDataPipe extends baseDataPipe {

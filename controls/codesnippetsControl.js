@@ -31,7 +31,6 @@
     post(codesnippets);
 
     snippets = $S.getType("codeSnippets");
-    console.log(snippets);
 
     // Set up the category selector.  Assumes the data objects have a category member.
     if ( snippets.length > 0 ) {
@@ -47,13 +46,13 @@
 
     // Establish the carousel and set its events.
     $C.setC(snippets);
-    $C.setSelect("codeselect", $C.getC(), "codeSnippets", "code");
+    $C.setSelect("codeselect", $C.getC(), "codeSnippets", "name");
     $C.makeEventHandlers("codecontrol", "codeSnippets", $CS.bailout );
 
     // Put an event on the category selector.
     $("#selectCodeCategory")
       .change(function(e) {
-        $F.categorySelector(this, "codeselect", "codeSnippets", "FK_language");
+        $F.categorySelector(this, "codeselect", "codeSnippets");
       });
   };
 
@@ -83,6 +82,10 @@ $(document).ready( function() {
 
     case "FK_language":
       message = "Enter the programming language that the snippet is written in.";
+      break;
+
+    case "name":
+      message = "Enter a name for your snippet.";
       break;
 
     case "code":
